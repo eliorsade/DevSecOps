@@ -60,7 +60,7 @@ print("Finished checking successfully")
 
 # List my regions
 try:
-    client = boto3.client('ec2')
+    client = boto3.client('ec2', region_name='us-east-1')
     response = client.describe_regions()
     all_regions = [region['RegionName'] for region in response['Regions']]
 
