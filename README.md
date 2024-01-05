@@ -1,15 +1,15 @@
-# Worldwide Inbound Connection via SG Check
+# Worldwide Inbound Connection via security groups Check
 ## Overview
-This script is designed to connect to your AWS account and check all Security Groups (SG) in all regions for inbound connections from the world (0.0.0.0/0). The script runs in two modes, log mode and action mode.
+This script will connect to AWS account and check all security groups in all regions for inbound connections from the world (0.0.0.0/0). The script runs in two modes, log mode and action mode.
 
 # Modes
 1. Log Mode:
-- In this mode, the script will identify Security Groups with inbound connections from the world and log their names.
+- The script will find security groups with inbound connections from the world.
 2. Action Mode:
-- In action mode, the script goes a step further by not only identifying but also deleting the rules allowing inbound connections from the world. The script will then log the Security Group names.
+- The script will run the same as log mode with also deleting the rules allowing inbound connections from the world.
 Log File
 
-- In both modes, a log file named log.txt will be generated and uploaded to the specified AWS S3 bucket. This log file contains information about the Security Groups and their inbound connections.
+- In both modes, a log file named log.txt will be created and uploaded to s3 bucket.
 
 ## Usage
 You have to insert the following prerequisites:
