@@ -2,7 +2,7 @@
 ## Overview
 This script will connect to AWS account and check all security groups in all regions for inbound connections from the world (0.0.0.0/0). The script runs in two modes, log mode and action mode.
 
-# Modes
+## Modes
 1. Log Mode:
 - The script will find security groups with inbound connections from the world.
 2. Action Mode:
