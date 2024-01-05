@@ -6,8 +6,7 @@ This script will connect to AWS account and check all security groups in all reg
 1. Log Mode:
 - The script will find security groups with inbound connections from the world.
 2. Action Mode:
-- The script will run the same as log mode with also deleting the rules allowing inbound connections from the world.
-Log File
+- The script will find security group rules with inbound connections from the world and delete them.
 
 #### In both modes, a log file named log.txt will be created and uploaded to s3 bucket.
 
