@@ -10,6 +10,9 @@ sg = ''
 filename = 'log.txt'
 bucket_in_s3 = ''
 
+bucket_name = os.environ.get('AWS_S3_BUCKET_NAME')
+log_mode = os.environ.get('LOG_MODE')
+
 
 print("Hello! welcome to the script that checks AWS account for SG with inbound rules to the world")
 print("Let's begin with some pre-checking")
