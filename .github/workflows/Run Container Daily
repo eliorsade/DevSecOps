@@ -1,0 +1,15 @@
+name: Run container daily
+
+on:
+  schedule:
+    - cron: '0 13 * * *'
+jobs:
+  run-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Docker login
+      run: |
+        echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+    - name: Run Docker Container
+      run: |
+        docker run "${{ secrets.DOCKERHUB_USERNAME }}"/sg-check:latest
