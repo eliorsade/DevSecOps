@@ -3,7 +3,6 @@ name: Run container daily
 on:
   schedule:
     - cron: '0 13 * * *'
-  workflow_dispatch:
 jobs:
   run-docker:
     runs-on: ubuntu-latest
