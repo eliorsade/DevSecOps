@@ -15,11 +15,18 @@ Log File
 You have to insert the following prerequisites:
 
 ### AWS Credentials:
-- access key 
-- secret key
+- Access key 
+- Secret key
   
 ### S3 Bucket:
 - Insert the name of the S3 bucket where the log file will be uploaded.
+
+### AWS Authorization:
+- List regions
+- List SG in all regions
+- List buckets
+- Upload to s3
+- Delete SG rules in all regions
 
 ### Python3 with Boto3:
 - Ensure that Python3 is installed on your system along with the Boto3 library.
