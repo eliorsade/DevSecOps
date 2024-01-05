@@ -35,9 +35,9 @@ You have to insert the following prerequisites in GitHub Secrets:
 - Ensure that Python3 is installed on your system along with the Boto3 library.
 
 ### GitHub Secrets:
-AWS_ACCESS_KEY_ID - AWS Access key 
-AWS_SECRET_ACCESS_KEY - AWS Secret key
-AWS_S3_BUCKET_NAME - S3 bucket name
-DOCKERHUB_USERNAME - DockerHub Username
-DOCKERHUB_PASSWORD - DockerHub Password
-LOG_MODE - Y/N | y/n 
+- AWS_ACCESS_KEY_ID - AWS Access key 
+- AWS_SECRET_ACCESS_KEY - AWS Secret key
+- AWS_S3_BUCKET_NAME - S3 bucket name
+- DOCKERHUB_USERNAME - DockerHub Username
+- DOCKERHUB_PASSWORD - DockerHub Password
+- LOG_MODE - Y/N | y/n 
