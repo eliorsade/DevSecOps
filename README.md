@@ -9,7 +9,7 @@ This script will connect to AWS account and check all security groups in all reg
 - The script will run the same as log mode with also deleting the rules allowing inbound connections from the world.
 Log File
 
-- In both modes, a log file named log.txt will be created and uploaded to s3 bucket.
+### In both modes, a log file named log.txt will be created and uploaded to s3 bucket.
 
 ## Usage
 You have to insert the following prerequisites:
