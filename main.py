@@ -20,7 +20,7 @@ print("Checking AWS creds for connection")
 
 # AWS checking
 try:
-    ec2_client = boto3.client('ec2')
+    s3_client = boto3.client('s3')
 
 except ClientError as error:
     print("Connecting to AWS failed:", error)
