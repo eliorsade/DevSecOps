@@ -11,7 +11,7 @@ This script will connect to AWS account and check all security groups in all reg
 #### In both modes, a log file named log.txt will be created and uploaded to s3 bucket.
 
 ## Usage
-To execute the script tyoe the command:
+To execute the script tyoe the command:  
 ```bash python3 main.py ```
 
 The script will automatticly connect to AWS account usign the credentials from GitHub Secrets.
