@@ -10,10 +10,12 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-    - name: Print Envs
+    - name: Print Envs (Debug)
       run: |
-        echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
-        echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
+        echo "Printing AWS_ACCESS_KEY_ID Length"
+        echo "${#AWS_ACCESS_KEY_ID}"
+        echo "Printing AWS_SECRET_ACCESS_KEY Length"
+        echo "${#AWS_SECRET_ACCESS_KEY}"
     - name: Docker login
       run: |
         echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
