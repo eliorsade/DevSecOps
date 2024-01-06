@@ -25,7 +25,7 @@ It will check for all security groups in all regions.
 - Python 3.10
 - Boto3
 - botocore
-- 
+
 ### GitHub Secrets:
 
 #### AWS Credentials:
