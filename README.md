@@ -12,7 +12,7 @@ This script will connect to AWS account and check all security groups in all reg
 
 ## Usage
 To execute the script tyoe the command:
-``` python3 main.py ```
+- ``` python3 main.py ```
 
 The script will automatticly connect to AWS account usign the credentials from GitHub Secrets.
 It will check for all security groups in all regions.
@@ -46,4 +46,4 @@ It will check for all security groups in all regions.
 - AWS_S3_BUCKET_NAME - S3 bucket name
 - DOCKERHUB_USERNAME - DockerHub Username
 - DOCKERHUB_PASSWORD - DockerHub Password
-- LOG_MODE - Y/N | y/n 
+- LOG_MODE - True or False
