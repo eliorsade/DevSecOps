@@ -17,7 +17,14 @@ To execute the script tyoe the command:
 The script will automatticly connect to AWS account usign the credentials from GitHub Secrets.
 It will check for all security groups in all regions.
 
-### prerequisites in GitHub Secrets:
+### prerequisites
+
+#### Python3 with Boto3:
+- Python 3.10
+- Boto3
+- botocore
+- 
+### GitHub Secrets:
 
 #### AWS Credentials:
 - Access key 
@@ -36,9 +43,6 @@ It will check for all security groups in all regions.
 - List buckets
 - Upload to S3
 - Delete SG rules in all regions
-
-#### Python3 with Boto3:
-- Ensure that Python3.10 is installed on your system along with AWS SDK for Python (Boto3).
 
 #### GitHub Secrets:
 - AWS_ACCESS_KEY_ID - AWS Access key 
