@@ -32,7 +32,7 @@ You have to insert the following prerequisites in GitHub Secrets:
 - Delete SG rules in all regions
 
 ### Python3 with Boto3:
-- Ensure that Python3 is installed on your system along with the Boto3 library.
+- Ensure that Python3.10 is installed on your system along with AWS SDK for Python (Boto3).
 
 ### GitHub Secrets:
 - AWS_ACCESS_KEY_ID - AWS Access key 
