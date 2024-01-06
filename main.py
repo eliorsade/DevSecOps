@@ -61,15 +61,6 @@ except ClientError as error:
     print("Getting list of regions failed:", error)
     sys.exit()
 
-# Checks for SG if it has inbound from 0.0.0.0/0
-
-
-def inbound_from_world(sg_check):
-    for i in sg_check['IpPermissions']:
-        for o in i.get('IpRanges', []):
-            if o.get('CidrIp') == '0.0.0.0/0':
-                return True
-    return False
 
 # List and check my SG in all regions
 
@@ -80,10 +71,10 @@ for region in all_regions:
     try:
         response = client_region.describe_security_groups()
         for sg in response['SecurityGroups']:
-            has_inbound = inbound_from_world(sg)
-            if has_inbound:
-                with open(filename, "a") as logfile:
-                    logfile.write("Region: " + region + " The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
+            for rule in sg['IpPermissions']:
+                if any(ip_range.get('CidrIp') == '0.0.0.0/0' for ip_range in rule.get('IpRanges', [])):
+                    with open(filename, "a") as logfile:
+                        logfile.write("Region: " + region + " The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
                 if not log_mode:
                     print("Deleting rules")
                     client.revoke_security_group_ingress(GroupId=sg['GroupId'], IpPermissions=[rule])
