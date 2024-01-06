@@ -16,10 +16,10 @@ To execute the script, type the command:
 python3 main.py
 ```
 
-The script will automatticly connect to AWS account usign the credentials from GitHub Secrets.
+The script will automatically connect to AWS account usign the credentials from GitHub Secrets.
 It will check for all security groups in all regions.
 
-### prerequisites
+### Prerequisites
 
 #### Python3 with Boto3:
 - Python 3.10
