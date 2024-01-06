@@ -6,9 +6,7 @@ import sys
 
 
 all_sg = []
-sg = ''
 filename = 'log.txt'
-bucket_in_s3 = ''
 
 bucket_name = os.environ.get('AWS_S3_BUCKET_NAME')
 log_mode = os.environ.get('LOG_MODE')
