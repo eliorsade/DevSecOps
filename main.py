@@ -88,19 +88,29 @@ for region in all_regions:
         response = client_region.describe_security_groups()
         for sg in response['SecurityGroups']:
             has_inbound = inbound_from_world(sg)
-            for rule in sg['IpPermissions']:
-                if any(ip_range.get('CidrIp') == '0.0.0.0/0' for ip_range in rule.get('IpRanges', [])):
-                    with open(filename, "a") as logfile:
-                        logfile.write("The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
-                    if not log_mode:
-                        print("Deleting rules")
-                        client.revoke_security_group_ingress(
-                        GroupId=sg['GroupId'],
-                        IpPermissions=[rule]
-                    )
+            if has_inbound:
+                with open(filename, "a") as logfile:
+                    logfile.write("Region: " + region + " The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
+                if not log_mode:
+                    print("Deleting rules")
+                    client.revoke_security_group_ingress(GroupId=sg['GroupId'], IpPermissions=[rule])
 
     except ClientError as error_region:
         print("In region", region, "There is an error:",  error_region)
+
+
+# make file with no duplication
+file_duplicate = filename
+lines = []
+
+with open(file_duplicate, 'r') as file:
+    for i in file:
+        if i not in lines:
+            lines.append(i)
+
+with open(file_duplicate, 'w') as file:
+    for i in lines:
+        file.write(i)
 
 
 # Upload the log file to s3
@@ -110,9 +120,9 @@ def upload_file(file_name, bucket, object_name=None):
     if object_name is None:
         object_name = os.path.basename(file_name)
 
-    s3_client = boto3.client('s3')
+    s3_client_upload = boto3.client('s3')
     try:
-        response_s3 = s3_client.upload_file(file_name, bucket, object_name)
+        response_s3 = s3_client_upload.upload_file(file_name, bucket, object_name)
     except ClientError as error_s3:
         print("Error in upload file to s3",  error_s3)
         return False
