@@ -12,7 +12,7 @@ This script will connect to AWS account and check all security groups in all reg
 
 ## Usage
 To execute the script, type the command:  
-```json 
+```bash 
 python3 main.py
 ```
 
