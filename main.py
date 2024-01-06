@@ -94,7 +94,6 @@ for region in all_regions:
                         logfile.write("The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
                     if not log_mode:
                         print("Deleting rules")
-                        Deleting the inbound rules
                         client.revoke_security_group_ingress(
                         GroupId=sg['GroupId'],
                         IpPermissions=[rule]
