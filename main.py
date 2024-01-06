@@ -5,11 +5,10 @@ import os
 import sys
 
 
-filename = 'log.txt'
-
 bucket_name = os.environ.get('AWS_S3_BUCKET_NAME')
 log_mode = os.environ.get('LOG_MODE')
-
+filename = 'log.txt'
+found_rule = False
 
 print("Hello! welcome to the script that checks AWS account for SG with inbound rules to the world")
 print("Let's begin with some pre-checking")
@@ -74,6 +73,7 @@ for region in all_regions:
         for sg in response['SecurityGroups']:
             for rule in sg['IpPermissions']:
                 if any(ip_range.get('CidrIp') == '0.0.0.0/0' for ip_range in rule.get('IpRanges', [])):
+                    found_rule = True
                     with open(filename, "a") as logfile:
                         logfile.write("Region: " + region + " The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
                     if not log_mode:
@@ -85,7 +85,7 @@ for region in all_regions:
 
 
 # Check that the file exist (no sg -> no file) and clean it with no duplication
-if os.path.exists(file_path):
+if found_rule:
     lines = []
     with open(filename, 'r') as file:
         for i in file:
@@ -94,6 +94,9 @@ if os.path.exists(file_path):
     with open(filename, 'w') as file:
         for i in lines:
             file.write(i)
+else:
+    with open(filename, "a") as logfile:
+        logfile.write("No security group with inbound from 0.0.0.0/0 was found on this AWS account")
 
 
 # Upload the log file to s3
