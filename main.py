@@ -5,7 +5,6 @@ import os
 import sys
 
 
-all_sg = []
 filename = 'log.txt'
 
 bucket_name = os.environ.get('AWS_S3_BUCKET_NAME')
@@ -85,17 +84,16 @@ for region in all_regions:
         print("In region", region, "There is an error:",  error_region)
 
 
-# make file with no duplication
-lines = []
-
-with open(filename, 'r') as file:
-    for i in file:
-        if i not in lines:
-            lines.append(i)
-
-with open(filename, 'w') as file:
-    for i in lines:
-        file.write(i)
+# Check that the file exist (no sg -> no file) and clean it with no duplication
+if os.path.exists(file_path):
+    lines = []
+    with open(filename, 'r') as file:
+        for i in file:
+            if i not in lines:
+                lines.append(i)
+    with open(filename, 'w') as file:
+        for i in lines:
+            file.write(i)
 
 
 # Upload the log file to s3
