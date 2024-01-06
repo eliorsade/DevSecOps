@@ -42,8 +42,10 @@ print("Checking if log mode is on or off")
 # Check log mode
 if log_mode == "True":
     print("Script is running in log mode")
+    log_mode = True
 elif log_mode == "False":
     print("Script is running in action mode")
+    log_mode = False
 else:
     print("Log mode is not set to On/Off (True or False in the secret file)\nRunning in Log mode as default")
 
