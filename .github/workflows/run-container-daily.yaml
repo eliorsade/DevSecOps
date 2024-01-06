@@ -16,6 +16,9 @@ jobs:
         echo "${#AWS_ACCESS_KEY_ID}"
         echo "Printing AWS_SECRET_ACCESS_KEY Length"
         echo "${#AWS_SECRET_ACCESS_KEY}"
+    - name: testing cache
+      run: |
+        echo "123"
     - name: Docker login
       run: |
         echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
