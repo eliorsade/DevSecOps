@@ -14,9 +14,7 @@ jobs:
         run: |
           docker build -t "${{ secrets.DOCKERHUB_USERNAME }}/sg-check:latest" \
           --build-arg AWS_S3_BUCKET_NAME="${{ secrets.AWS_S3_BUCKET_NAME }}" \
-          --build-arg LOG_MODE="${{ secrets.LOG_MODE }}" \
-          --build-arg AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
-          --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" .
+          --build-arg LOG_MODE="${{ secrets.LOG_MODE }}" .
       - name: Docker login
         run: |
           echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
