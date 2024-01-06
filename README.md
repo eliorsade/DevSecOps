@@ -12,7 +12,8 @@ This script will connect to AWS account and check all security groups in all reg
 
 ## Usage
 To execute the script, type the command:  
-```bash python3 main.py ```
+```python3 
+python3 main.py ```
 
 The script will automatticly connect to AWS account usign the credentials from GitHub Secrets.
 It will check for all security groups in all regions.
