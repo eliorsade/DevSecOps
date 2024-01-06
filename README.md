@@ -11,30 +11,36 @@ This script will connect to AWS account and check all security groups in all reg
 #### In both modes, a log file named log.txt will be created and uploaded to s3 bucket.
 
 ## Usage
-You have to insert the following prerequisites in GitHub Secrets:
+To execute the script tyoe the command:
+``` python3 main.py ```
 
-### AWS Credentials:
+The script will automatticly connect to AWS account usign the credentials from GitHub Secrets.
+It will check for all security groups in all regions.
+
+### prerequisites in GitHub Secrets:
+
+#### AWS Credentials:
 - Access key 
 - Secret key
 
-### DockerHub Credentials:
+#### DockerHub Credentials:
 - Username
 - Password
   
-### S3 Bucket:
+#### S3 Bucket:
 - Insert the name of the S3 bucket where the log file will be uploaded.
 
-### AWS Authorization:
+#### AWS Authorization:
 - List regions
 - List SG in all regions
 - List buckets
 - Upload to S3
 - Delete SG rules in all regions
 
-### Python3 with Boto3:
+#### Python3 with Boto3:
 - Ensure that Python3.10 is installed on your system along with AWS SDK for Python (Boto3).
 
-### GitHub Secrets:
+#### GitHub Secrets:
 - AWS_ACCESS_KEY_ID - AWS Access key 
 - AWS_SECRET_ACCESS_KEY - AWS Secret key
 - AWS_S3_BUCKET_NAME - S3 bucket name
