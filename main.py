@@ -86,15 +86,14 @@ for region in all_regions:
 
 
 # make file with no duplication
-file_duplicate = filename
 lines = []
 
-with open(file_duplicate, 'r') as file:
+with open(filename, 'r') as file:
     for i in file:
         if i not in lines:
             lines.append(i)
 
-with open(file_duplicate, 'w') as file:
+with open(filename, 'w') as file:
     for i in lines:
         file.write(i)
 
