@@ -42,20 +42,15 @@ except botocore.exceptions.ClientError as no_bucket:
 
 print("Checking if log mode is on or off")
 # Check log mode
-while True:
-    if log_mode == 'Y' or log_mode == 'y':
-        log_mode = True
-        print("Script is running in log mode")
-        break
-    elif log_mode == 'N' or log_mode == 'n':
-        log_mode = False
-        print("Script is running in action mode")
-        break
-    else:
-        print("Log mode is not set to On/Off (Y/y or N/n in the secret file) \n Exiting the script")
-        sys.exit()
+if log_mode == "True":
+    print("Script is running in log mode")
+elif log_mode == "False":
+    print("Script is running in action mode")
+else:
+    print("Log mode is not set to On/Off (True or False in the secret file)\nRunning in Log mode as default")
 
-print("Finished checking successfully")
+
+print("Finished all checks successfully")
 
 
 # List my regions
