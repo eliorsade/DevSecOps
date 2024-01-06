@@ -72,13 +72,15 @@ for region in all_regions:
         response = client_region.describe_security_groups()
         for sg in response['SecurityGroups']:
             for rule in sg['IpPermissions']:
-                if any(ip_range.get('CidrIp') == '0.0.0.0/0' for ip_range in rule.get('IpRanges', [])):
+                for ip_range in rule.get('IpRanges', []):
+                    if ip_range.get('CidrIp') == '0.0.0.0/0':
                     found_rule = True
                     with open(filename, "a") as logfile:
                         logfile.write("Region: " + region + " The SG: " + sg['GroupName'] + " " + sg['GroupId'] + " has inbound rule from the world\n")
                     if not log_mode:
                         print("Deleting rules", sg['GroupName'], sg['GroupId'], rule)
                         client_region.revoke_security_group_ingress(GroupId=sg['GroupId'], IpPermissions=[rule])
+
 
     except ClientError as error_region:
         print("In region", region, "There is an error:",  error_region)
