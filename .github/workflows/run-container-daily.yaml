@@ -15,4 +15,4 @@ jobs:
         echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
     - name: Run Docker Container
       run: |
-        docker run "${{ secrets.DOCKERHUB_USERNAME }}"/sg-check:latest
+        docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY "${{ secrets.DOCKERHUB_USERNAME }}"/sg-check:latest
